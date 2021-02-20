@@ -1,17 +1,18 @@
 #include <iostream>
 #include "MyString.h"
 
-void TestFunc(const CMyString &strParam)
+CMyString TestFunc()
 {
-    std::cout << strParam << std::endl;
+    CMyString strTest("TestFunc() return");
+    std::cout << strTest << std::endl;
+
+    return strTest;
 }
-// const char *에 대한 변환생성자와 char*로의 형변환 연산자를 만들어 넣으셈
+
 int main()
 {
-    CMyString strData("Hello");
-
-    ::TestFunc(strData);
-    ::TestFunc(CMyString("World"));
+    // No name contemporary object is made.
+    CMyString a = TestFunc();
 
     return 0;
 }

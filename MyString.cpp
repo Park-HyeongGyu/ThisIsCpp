@@ -2,13 +2,16 @@
 #include <cstring>
 #include <iostream>
 
-CMyString::CMyString() :m_pszData(nullptr), m_nLength(0) {}
+CMyString::CMyString() :m_pszData(nullptr), m_nLength(0)
+{
+    std::cout << "constructor is called" << std::endl;
+}
 CMyString::~CMyString() { Release(); }
 
 // In case of object, Solve with object's way!!
 CMyString::CMyString(const CMyString &rhs) : m_pszData(nullptr), m_nLength(0)
 {
-    // std::cout << "CMyString::CMyString(const CMyString &rhs)" << std::endl; 
+    std::cout << "CMyString::CMyString(const CMyString &rhs)" << std::endl; 
     this->SetString(rhs.GetString());
 }
 
@@ -16,6 +19,20 @@ CMyString::CMyString(const char* str) : m_pszData(nullptr), m_nLength(0)
 {
     // std::cout << "CMyString::CMyString(const char* str) : m_pszData(nullptr), m_nLength(0)" << std::endl;
     this->SetString(str);
+}
+
+CMyString::CMyString(CMyString &&rhs)
+{
+    std::cout << "Move constructor of CMyString is called" << std::endl;
+
+    // It is okay to do shallow copy! Because original will be disappear!
+    m_pszData = rhs.m_pszData;
+    m_nLength = rhs.m_nLength;
+
+    // Initialize members of original contemporary object. Never disassemble.
+    rhs.m_pszData = nullptr;
+    rhs.m_nLength = 0;
+    // Because of destructor of original contemporary object?
 }
 
 CMyString& CMyString::operator=(const CMyString &rhs)
