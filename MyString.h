@@ -4,7 +4,10 @@ class CMyString
 {
 public:
     CMyString();
+    CMyString(const CMyString &rhs);
     ~CMyString();
+
+    CMyString& operator=(const CMyString &rhs);
 
 private:
     // pointer that indicate dynamic allocated memory for saving string.
