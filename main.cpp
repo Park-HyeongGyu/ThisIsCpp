@@ -1,19 +1,17 @@
 #include <iostream>
 #include "MyString.h"
 
+void TestFunc(const CMyString &strParam)
+{
+    std::cout << strParam << std::endl;
+}
+// const char *에 대한 변환생성자와 char*로의 형변환 연산자를 만들어 넣으셈
 int main()
 {
-    CMyString strData, strTest;
-    strData.SetString("Hello");
-    strTest.SetString("World");
+    CMyString strData("Hello");
 
-    // copy generating.
-    CMyString strNewData(strData);
-    std::cout << strNewData.GetString() << std::endl;
-
-    // calling operator=.(단순 대입연산자 호출)
-    strNewData = strTest;
-    std::cout << strNewData.GetString() << std::endl;
+    ::TestFunc(strData);
+    ::TestFunc(CMyString("World"));
 
     return 0;
 }

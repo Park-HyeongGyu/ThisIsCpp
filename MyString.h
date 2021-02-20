@@ -7,6 +7,12 @@ public:
     CMyString(const CMyString &rhs);
     ~CMyString();
 
+    explicit CMyString(const char* str);
+    operator char*() const
+    {
+        return m_pszData;
+    }
+
     CMyString& operator=(const CMyString &rhs);
 
 private:
