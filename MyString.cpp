@@ -4,14 +4,14 @@
 
 CMyString::CMyString() :m_pszData(nullptr), m_nLength(0)
 {
-    std::cout << "constructor is called" << std::endl;
+    // std::cout << "constructor is called" << std::endl;
 }
 CMyString::~CMyString() { Release(); }
 
 // In case of object, Solve with object's way!!
 CMyString::CMyString(const CMyString &rhs) : m_pszData(nullptr), m_nLength(0)
 {
-    std::cout << "CMyString::CMyString(const CMyString &rhs)" << std::endl; 
+    // std::cout << "CMyString::CMyString(const CMyString &rhs)" << std::endl; 
     this->SetString(rhs.GetString());
 }
 
@@ -23,7 +23,7 @@ CMyString::CMyString(const char* str) : m_pszData(nullptr), m_nLength(0)
 
 CMyString::CMyString(CMyString &&rhs)
 {
-    std::cout << "Move constructor of CMyString is called" << std::endl;
+    // std::cout << "Move constructor of CMyString is called" << std::endl;
 
     // It is okay to do shallow copy! Because original will be disappear!
     m_pszData = rhs.m_pszData;
@@ -37,7 +37,7 @@ CMyString::CMyString(CMyString &&rhs)
 
 CMyString& CMyString::operator=(const CMyString &rhs)
 {
-    std::cout << "CMyString& CMyString::operator=(const CMyString &rhs)" << std::endl;
+    // std::cout << "CMyString& CMyString::operator=(const CMyString &rhs)" << std::endl;
 
     if(this != &rhs)
     {
@@ -92,4 +92,66 @@ void CMyString::Release()
 
     m_pszData = nullptr;
     m_nLength = 0;
+}
+
+int CMyString::GetLength() const
+{
+    return m_nLength;
+}
+
+int CMyString::Append(const char* pszParam)
+{
+    // checking validity of parameter
+    if(pszParam == nullptr)
+    {
+        return 0;
+    }
+
+    int nLenParam = strlen(pszParam);
+
+    if(nLenParam == 0)
+    {
+        return 0;
+    }
+
+    // if threre is no string setted, do as allocating new string.
+    if(m_pszData == nullptr)
+    {
+        SetString(pszParam);
+
+        return m_nLength;
+    }
+
+    // Back up length of current string.
+    int nLenCur = m_nLength;
+
+    // Allocate new memory that can be saved added two string.
+    char *pszResult = new char[nLenCur + nLenParam +1];
+
+    // Append string.
+    strcpy(pszResult, m_pszData);
+    strcpy(pszResult+(sizeof(char)*nLenCur), pszParam);
+
+    // Delete current string and renew member information.
+    Release();
+    m_pszData = pszResult;
+    m_nLength = nLenCur + nLenParam;
+
+    return m_nLength;
+}
+
+CMyString CMyString::operator+(const CMyString &rhs)
+{
+    CMyString cont;
+    cont.Append(this->GetString());
+    cont.Append(rhs.GetString());
+    
+    return cont;
+}
+
+CMyString& CMyString::operator+=(const CMyString &rhs)
+{
+    this->Append(rhs.GetString());
+
+    return *this;
 }

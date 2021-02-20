@@ -28,4 +28,9 @@ public:
     int SetString(const char* pszParam);
     const char* GetString() const;
     void Release();
+
+    int GetLength() const;
+    int Append(const char* pszParam);
+    CMyString operator+(const CMyString &rhs);
+    CMyString& operator+=(const CMyString &rhs);
 };

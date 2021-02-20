@@ -1,18 +1,16 @@
 #include <iostream>
 #include "MyString.h"
 
-CMyString TestFunc()
-{
-    CMyString strTest("TestFunc() return");
-    std::cout << strTest << std::endl;
-
-    return strTest;
-}
-
 int main()
 {
-    // No name contemporary object is made.
-    CMyString a = TestFunc();
+    CMyString strLeft("Hello"), strRight("World"), strResult;
+    strResult = strLeft + strRight;
+
+    std::cout << strResult << std::endl;
+
+    std::cout << strLeft << std::endl;
+    strLeft += CMyString("World");
+    std::cout << strLeft << std::endl;
 
     return 0;
 }
