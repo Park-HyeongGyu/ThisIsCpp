@@ -158,10 +158,20 @@ CMyString& CMyString::operator+=(const CMyString &rhs)
 
 char CMyString::operator[](int index) const
 {
+    if(index < 0 || index > m_nLength-1)
+    {
+        std::cout << "Index out of range" << std::endl;
+        return m_pszData[0];
+    }
     return m_pszData[index];
 }
 
 char& CMyString::operator[](int index)
 {
+    if(index < 0 || index > m_nLength -1 )
+    {
+        std::cout << "Index out of range" << std::endl;
+        return m_pszData[0];
+    }
     return m_pszData[index];
 }
