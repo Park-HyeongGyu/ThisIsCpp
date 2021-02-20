@@ -36,4 +36,7 @@ public:
 
     char operator[](int index) const;
     char& operator[](int index);
+
+    int operator==(const CMyString &rhs);
+    int operator!=(const CMyString &rhs);
 };
