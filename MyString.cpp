@@ -155,3 +155,13 @@ CMyString& CMyString::operator+=(const CMyString &rhs)
 
     return *this;
 }
+
+char CMyString::operator[](int index) const
+{
+    return m_pszData[index];
+}
+
+char& CMyString::operator[](int index)
+{
+    return m_pszData[index];
+}

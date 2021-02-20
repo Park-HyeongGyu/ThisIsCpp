@@ -33,4 +33,7 @@ public:
     int Append(const char* pszParam);
     CMyString operator+(const CMyString &rhs);
     CMyString& operator+=(const CMyString &rhs);
+
+    char operator[](int index) const;
+    char& operator[](int index);
 };
