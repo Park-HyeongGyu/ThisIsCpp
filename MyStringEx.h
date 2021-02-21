@@ -1,3 +1,5 @@
+#pragma once
+
 #include "MyString.h"
 
 class CMyStringEx : public CMyString

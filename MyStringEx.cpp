@@ -1,6 +1,13 @@
 #include "MyStringEx.h"
+#include <cstring>
 
 int CMyStringEx::Find(const char* pszParam)
 {
-    return 0;
+    const char * finded = strstr(this->GetString(), pszParam);
+    int index = 0;
+    while(GetString()+index != finded)
+    {
+        index++;
+    }
+    return index;
 }
