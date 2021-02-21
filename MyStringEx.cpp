@@ -1,11 +1,16 @@
 #include "MyStringEx.h"
 #include <cstring>
+#include <iostream>
 
 CMyStringEx::CMyStringEx()
 {
 }
 
 CMyStringEx::~CMyStringEx()
+{
+}
+
+CMyStringEx::CMyStringEx(const char* pszParam) : CMyString(pszParam)
 {
 }
 
