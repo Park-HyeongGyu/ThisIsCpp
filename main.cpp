@@ -4,11 +4,8 @@
 int main()
 {
     CMyStringEx strTest;
-    strTest.SetString("I am a boy.");
+    strTest.SetString("멍멍이아들");
     std::cout << strTest << std::endl;
-
-    int nIndex = strTest.Find("am");
-    std::cout << "Index: " << nIndex << std::endl;
 
     return 0;
 }

@@ -72,6 +72,9 @@ int CMyString::SetString(const char* pszParam)
     // save string to new allocated memory.
     strcpy(m_pszData, pszParam);
     m_nLength = nLength;
+
+    // Calling future!
+    OnSetString(m_pszData, m_nLength);
     
     // return the length of string.
     return nLength;
@@ -200,4 +203,9 @@ int CMyString::operator!=(const CMyString &rhs)
     }
 
     return 1;
+}
+
+void CMyString::OnSetString(char *pszData, int nLength)
+{
+
 }

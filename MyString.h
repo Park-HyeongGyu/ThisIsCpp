@@ -39,4 +39,6 @@ public:
 
     int operator==(const CMyString &rhs);
     int operator!=(const CMyString &rhs);
+
+    virtual void OnSetString(char *pszData, int nLength);
 };
