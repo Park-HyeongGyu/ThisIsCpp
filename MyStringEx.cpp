@@ -25,3 +25,19 @@ int CMyStringEx::Find(const char* pszParam)
 
     return -1;
 }
+
+int CMyStringEx::SetString(const char* pszParam)
+{
+    int nResult;
+
+    if(strcmp(pszParam, "멍멍이아들") == 0)
+    {
+        nResult = CMyString::SetString("착한사람");
+    }
+    else
+    {
+        nResult = CMyString::SetString(pszParam);
+    }
+
+    return nResult;
+}
