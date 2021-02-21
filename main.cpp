@@ -1,29 +1,14 @@
 #include <iostream>
-#include "MyString.h"
+#include "MyStringEx.h"
 
 int main()
 {
-    CMyString strLeft("Test"), strRight("String");
+    CMyStringEx strTest;
+    strTest.SetString("I am a boy.");
+    std::cout << strTest << std::endl;
 
-    if(strLeft == strRight)
-    {
-        std::cout << "Same" << std::endl;
-    }
-    else
-    {
-        std::cout << "Different" << std::endl;
-    }
-
-    strLeft = CMyString("String");
-
-    if(strLeft != strRight)
-    {
-        std::cout << "Different" << std::endl;
-    }
-    else
-    {
-        std::cout << "Same" << std::endl;
-    }
+    int nIndex = strTest.Find("am");
+    std::cout << "Index: " << nIndex << std::endl;
 
     return 0;
 }
