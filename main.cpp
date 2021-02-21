@@ -1,29 +1,10 @@
 #include <iostream>
-#include "MyString.h"
+#include "MyStringEx.h"
 
 int main()
 {
-    CMyString strLeft("Test"), strRight("String");
-
-    if(strLeft == strRight)
-    {
-        std::cout << "Same" << std::endl;
-    }
-    else
-    {
-        std::cout << "Different" << std::endl;
-    }
-
-    strLeft = CMyString("String");
-
-    if(strLeft != strRight)
-    {
-        std::cout << "Different" << std::endl;
-    }
-    else
-    {
-        std::cout << "Same" << std::endl;
-    }
+    CMyStringEx strLeft("Hello"), strRight("World");
+    std::cout << strLeft + strRight << std::endl;
 
     return 0;
 }
