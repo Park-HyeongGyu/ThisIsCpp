@@ -1,13 +1,27 @@
 #include "MyStringEx.h"
 #include <cstring>
 
+CMyStringEx::CMyStringEx()
+{
+}
+
+CMyStringEx::~CMyStringEx()
+{
+}
+
 int CMyStringEx::Find(const char* pszParam)
 {
-    const char * finded = strstr(this->GetString(), pszParam);
-    int index = 0;
-    while(GetString()+index != finded)
+    if(pszParam == nullptr || GetString() == nullptr)
     {
-        index++;
+        return -1;
     }
-    return index;
+
+    const char *pszResult = strstr(GetString(), pszParam);
+
+    if(pszResult != nullptr)
+    {
+        return pszResult - GetString();
+    }
+
+    return -1;
 }
